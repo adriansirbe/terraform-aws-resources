@@ -1,0 +1,2 @@
+variable "infra-vpc-id" {}
+
