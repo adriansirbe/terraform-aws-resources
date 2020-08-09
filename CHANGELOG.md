@@ -1,5 +1,9 @@
 ### Here are all the siginificant changes on every PR
 
+### [0.0.3] - 2020-08-09
+### Removed
+- unneeded comments
+
 ### [0.0.2] - 2020-08-09
 ### Added
 - sg, subnet, vpc and ec2 for jenkins
