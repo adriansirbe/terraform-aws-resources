@@ -1,5 +1,9 @@
 ### Here are all the siginificant changes on every PR
 
+## [0.0.4] - 2020-08-12
+### Added
+- added s3 bucket for node js app
+
 ### [0.0.3] - 2020-08-09
 ### Removed
 - unneeded comments
