@@ -1,5 +1,9 @@
 ### Here are all the siginificant changes on every PR
 
+## [0.0.5] - 2020-08-16
+### Added
+- userdata template file
+
 ## [0.0.4] - 2020-08-12
 ### Added
 - added s3 bucket for node js app
