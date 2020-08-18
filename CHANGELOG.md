@@ -1,5 +1,9 @@
 ### Here are all the siginificant changes on every PR
 
+## [0.0.6] - 2020-08-18
+### Added
+- cloudfront distribution
+
 ## [0.0.5] - 2020-08-16
 ### Added
 - userdata template file
