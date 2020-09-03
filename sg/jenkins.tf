@@ -13,7 +13,17 @@ resource "aws_security_group_rule" "jenkins-ssh" {
   from_port   = 22
   to_port     = 22
   protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["89.137.108.180/32"]
+
+  security_group_id = "${aws_security_group.jenkins-sg.id}"
+}
+
+resource "aws_security_group_rule" "jenkins-efs" {
+  type        = "ingress"
+  from_port   = 2049
+  to_port     = 2049
+  protocol    = "tcp"
+  self        = true
 
   security_group_id = "${aws_security_group.jenkins-sg.id}"
 }
@@ -23,7 +33,7 @@ resource "aws_security_group_rule" "jenkins-http" {
   from_port = 8080
   to_port   = 8080
   protocol  = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = ["89.137.108.180/32"]
 
   security_group_id = "${aws_security_group.jenkins-sg.id}"
 }
