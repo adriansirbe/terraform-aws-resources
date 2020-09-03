@@ -1,5 +1,10 @@
 ### Here are all the siginificant changes on every PR
 
+## [0.0.7] - 2020-09-03
+### Added
+- efs for storing jenkins configuration
+- mount in user data template file
+
 ## [0.0.6] - 2020-08-18
 ### Added
 - cloudfront distribution

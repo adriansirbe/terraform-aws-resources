@@ -10,6 +10,30 @@ resource "aws_s3_bucket" "basic-web-application-2020" {
   }
 }
 
+resource "aws_s3_bucket_policy" "basic-web-application-2020" {
+  bucket = aws_s3_bucket.basic-web-application-2020.id
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::basic-web-application-2020/*"
+            ]
+        }
+    ]
+}
+POLICY
+}
+
 resource "aws_cloudfront_distribution" "basic_web_application" {
   origin {
     domain_name = "${aws_s3_bucket.basic-web-application-2020.bucket_regional_domain_name}"
