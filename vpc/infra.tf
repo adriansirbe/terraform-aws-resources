@@ -10,7 +10,7 @@ resource "aws_vpc" "infra" {
 }
 
 resource "aws_internet_gateway" "infra" {
-    vpc_id = "${aws_vpc.infra.id}"
+    vpc_id = aws_vpc.infra.id
 
     tags = {
         Name = "infra"
@@ -18,10 +18,10 @@ resource "aws_internet_gateway" "infra" {
 }
 
 resource "aws_route_table" "infra" {
-    vpc_id = "${aws_vpc.infra.id}"
+    vpc_id = aws_vpc.infra.id
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = "${aws_internet_gateway.infra.id}"
+        gateway_id = aws_internet_gateway.infra.id
     }
     tags = {
         Name = "infra"
@@ -29,8 +29,8 @@ resource "aws_route_table" "infra" {
 }
 
 resource "aws_route_table_association" "a" {
-  subnet_id      = "${var.eu-central-1a-infra-subnet-id}"
-  route_table_id = "${aws_route_table.infra.id}"
+  subnet_id      = var.eu-central-1a-infra-subnet-id
+  route_table_id = aws_route_table.infra.id
 }
 
 output "vpc-id" {

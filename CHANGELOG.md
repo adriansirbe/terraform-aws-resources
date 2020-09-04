@@ -1,5 +1,9 @@
 ### Here are all the siginificant changes on every PR
 
+## [0.0.8] - 2020-09-04
+### Removed
+- warnings
+
 ## [0.0.7] - 2020-09-03
 ### Added
 - efs for storing jenkins configuration

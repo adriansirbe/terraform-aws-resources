@@ -19,7 +19,7 @@ resource "aws_efs_file_system" "jenkins-fs" {
 resource "aws_efs_mount_target" "mount-jenkins" {
   depends_on       = [ aws_efs_file_system.jenkins-fs, ]
    file_system_id  = aws_efs_file_system.jenkins-fs.id
-   subnet_id       = "${var.eu-central-1a-infra-subnet-id}"
+   subnet_id       = var.eu-central-1a-infra-subnet-id
    security_groups = ["${var.jenkins-sg-id}"]
 }
 
@@ -28,18 +28,18 @@ resource "aws_efs_access_point" "jenkins" {
 }
 
 resource "aws_instance" "jenkins" {
-  ami                  = "${var.ami}"
+  ami                  = var.ami
   instance_type        = "t2.micro"
 
   tags = {
     Name   = "jenkins"
   }
 
-  subnet_id                   = "${var.eu-central-1a-infra-subnet-id}"
+  subnet_id                   = var.eu-central-1a-infra-subnet-id
   key_name                    = "degree-key"
   associate_public_ip_address = "true"
   disable_api_termination     = "true"
-  user_data                   = "${data.template_file.install-jenkins.rendered}"
+  user_data                   = data.template_file.install-jenkins.rendered
 
   vpc_security_group_ids = ["${var.jenkins-sg-id}"]
 }

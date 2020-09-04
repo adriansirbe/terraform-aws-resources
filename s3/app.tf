@@ -36,7 +36,7 @@ POLICY
 
 resource "aws_cloudfront_distribution" "basic_web_application" {
   origin {
-    domain_name = "${aws_s3_bucket.basic-web-application-2020.bucket_regional_domain_name}"
+    domain_name = aws_s3_bucket.basic-web-application-2020.bucket_regional_domain_name
     origin_id   = "s3-basic-web-application-2020-bucket"
 
     custom_origin_config {
