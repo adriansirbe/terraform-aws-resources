@@ -1,5 +1,5 @@
 resource "aws_subnet" "eu-central-1a-infra" {
-  vpc_id            = "${var.infra-vpc-id}"
+  vpc_id            = var.infra-vpc-id
   cidr_block        = "10.0.1.0/26"
   availability_zone = "eu-central-1a"
 

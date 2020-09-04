@@ -1,7 +1,3 @@
-provider "aws" {
-    region = "eu-central-1"
-}
-
 resource "aws_s3_bucket" "terraform-aws-resources-state-s3" {
     bucket = "terraform-aws-resources-state-s3"
 

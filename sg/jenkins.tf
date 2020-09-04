@@ -1,7 +1,7 @@
 resource "aws_security_group" "jenkins-sg" {
   name        = "jenkins-sg"
   description = "Security group for jenkins server"
-  vpc_id      = "${var.infra-vpc-id}"
+  vpc_id      = var.infra-vpc-id
 
   tags ={
     Name = "jenkins-sg"
@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "jenkins-ssh" {
   protocol    = "tcp"
   cidr_blocks = ["89.137.108.180/32"]
 
-  security_group_id = "${aws_security_group.jenkins-sg.id}"
+  security_group_id = aws_security_group.jenkins-sg.id
 }
 
 resource "aws_security_group_rule" "jenkins-efs" {
@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "jenkins-efs" {
   protocol    = "tcp"
   self        = true
 
-  security_group_id = "${aws_security_group.jenkins-sg.id}"
+  security_group_id = aws_security_group.jenkins-sg.id
 }
 
 resource "aws_security_group_rule" "jenkins-http" {
@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "jenkins-http" {
   protocol  = "tcp"
   cidr_blocks = ["89.137.108.180/32"]
 
-  security_group_id = "${aws_security_group.jenkins-sg.id}"
+  security_group_id = aws_security_group.jenkins-sg.id
 }
 
 resource "aws_security_group_rule" "jenkins-internet-out" {
@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "jenkins-internet-out" {
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
 
-  security_group_id = "${aws_security_group.jenkins-sg.id}"
+  security_group_id = aws_security_group.jenkins-sg.id
 }
 
 output "jenkins-sg-id" {
