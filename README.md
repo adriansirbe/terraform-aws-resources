@@ -2,7 +2,7 @@
 ### A repository for creating/deleting AWS resources with terraform.
 ### This project is for personal use.
 
-### terraform version = v0.12.28
+### terraform version = v0.13.2
 
 
 
